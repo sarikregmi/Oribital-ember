@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orbital Ember</title>
+  <link rel="stylesheet" href="/static/styles.css?v=human-answers-1">
+</head>
+<body>
+<div id="startup-loader" class="startup-loader" role="status" aria-live="polite">
+  <div class="startup-card">
+    <p class="eyebrow">ORBITAL EMBER</p>
+    <h2>Preparing fire research</h2>
+    <p id="startup-message">Searching NASA and related fire-combustion sources...</p>
+    <div class="startup-progress"><i></i></div>
+  </div>
+</div>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">NASA PSI / FIRE SAFETY INTELLIGENCE</p>
+        <h1>Orbital Ember</h1>
+        <p class="subtitle">Find the experiments that make spacecraft fire safer.</p>
+      </div>
+      <div id="status" class="status" aria-live="polite">Connecting...</div>
+    </header>
+
+    <nav class="app-tabs" aria-label="Application sections">
+      <button class="app-tab active" data-view="ask-view" type="button">Ask AI</button>
+      <button class="app-tab" data-view="scenario-view" type="button">Custom scenario</button>
+      <button class="app-tab" data-view="search-view" type="button">Search data</button>
+      <button class="app-tab" data-view="evidence-view" type="button">Evidence</button>
+    </nav>
+
+    <section id="ask-view" class="app-view active-view" data-view="ask-view" aria-label="Ask the research assistant">
+      <label class="ask-box">
+        <span>Ask AI across the research catalog</span>
+        <input id="question" type="text" placeholder="How does elevated oxygen change fire risk?">
+      </label>
+      <div class="ask-actions">
+        <button id="ask-button" class="ask-button" type="button">Ask AI</button>
+      </div>
+    </section>
+    <section id="answer" class="answer-panel app-view" data-view="evidence-view" aria-live="polite"></section>
+
+    <section id="scenario-view" class="scenario-panel scenario-insert app-view" data-view="scenario-view" aria-label="Custom scenario">
+      <div class="section-heading compact-heading">
+        <div>
+          <p class="eyebrow">CUSTOM SCENARIO</p>
+          <h2>Give the AI conditions to compare</h2>
+        </div>
+        <span class="count">Input context only, not a safety prediction</span>
+      </div>
+      <div class="scenario-grid">
+        <label>Material
+          <select id="scenario-material">
+            <option value="">Not specified</option>
+            <option value="cellulose">Cellulose</option>
+            <option value="cotton/fiberglass">Cotton / fiberglass</option>
+            <option value="PMMA">PMMA</option>
+            <option value="polyethylene">Polyethylene</option>
+            <option value="Nomex">Nomex</option>
+          </select>
+        </label>
+        <label>Oxygen <output id="scenario-oxygen-value">21%</output>
+          <input id="scenario-oxygen" type="range" min="10" max="40" step="0.5" value="21">
+        </label>
+        <label>Pressure <output id="scenario-pressure-value">1.00 atm</output>
+          <input id="scenario-pressure" type="range" min="0.5" max="1.2" step="0.05" value="1">
+        </label>
+        <label>Airflow <output id="scenario-airflow-value">10 cm/s</output>
+          <input id="scenario-airflow" type="range" min="0" max="150" step="1" value="10">
+        </label>
+        <label>Gravity <output id="scenario-gravity-value">0 g</output>
+          <input id="scenario-gravity" type="range" min="0" max="1" step="0.01" value="1">
+        </label>
+        <label>Thickness <output id="scenario-thickness-value">0.10 mm</output>
+          <input id="scenario-thickness" type="range" min="0.05" max="1" step="0.05" value="0.1">
+        </label>
+      </div>
+      <button id="scenario-ask-button" class="ask-button scenario-action" type="button">Analyze this scenario</button>
+    </section>
+
+    <section class="controls app-view" data-view="search-view" aria-label="Investigation search">
+      <label class="search-box">
+        <span>Search investigations</span>
+        <input id="search" type="search" placeholder="Try oxygen, smoke, suppression...">
+      </label>
+      <label class="filter-box">
+        <span>Focus</span>
+        <select id="domain">
+          <option value="">All domains</option>
+          <option value="flammability">Flammability</option>
+          <option value="detection">Detection</option>
+          <option value="suppression">Suppression</option>
+          <option value="fundamental">Fundamental</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="workspace app-view" data-view="search-view">
+      <div class="results-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">INVESTIGATION INDEX</p>
+            <h2 id="result-title">Loading investigations</h2>
+          </div>
+          <span id="result-count" class="count"></span>
+        </div>
+        <div id="results" class="results" aria-live="polite"></div>
+        <div id="saved-resources" class="saved-resources" aria-live="polite"></div>
+      </div>
+
+      <aside class="insight-panel" id="insight-panel">
+        <p class="eyebrow">GROUNDED INSIGHT</p>
+        <h2>Select an investigation</h2>
+        <p class="muted">Choose a result to inspect its conditions, measurements, and fire-safety relevance.</p>
+      </aside>
+    </section>
+  </main>
+  <script src="/static/app.js?v=human-answers-1"></script>
+</body>
+</html>

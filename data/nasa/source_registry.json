@@ -1,0 +1,30 @@
+{
+  "registry": "Orbital Ember NASA source registry",
+  "verification_note": "URLs are primary-source discovery records. Confirm exact document revision and applicability before engineering use.",
+  "sources": [
+    {
+      "id": "sofie",
+      "title": "Solid Fuel Ignition and Extinction",
+      "publisher": "NASA Glenn Research Center",
+      "url": "https://www.nasa.gov/glenn/sofie/",
+      "source_type": "NASA project page",
+      "verification_status": "URL recorded; live fetch may be rate-limited"
+    },
+    {
+      "id": "bass",
+      "title": "Burning and Suppression of Solids",
+      "publisher": "NASA Technical Reports Server",
+      "url": "https://ntrs.nasa.gov/search?q=Burning%20and%20Suppression%20of%20Solids",
+      "source_type": "NASA NTRS search",
+      "verification_status": "Search record; select and verify the applicable report"
+    },
+    {
+      "id": "saffire",
+      "title": "Spacecraft Fire Experiment",
+      "publisher": "NASA",
+      "url": "https://www.nasa.gov/search/?q=SAFFIRE%20spacecraft%20fire%20experiment",
+      "source_type": "NASA search record",
+      "verification_status": "Search record; select and verify the applicable mission page"
+    }
+  ]
+}
