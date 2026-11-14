@@ -18,6 +18,25 @@ No Python or install needed.
 The app opens in its own window.
 
 **Notes**
+AI Requirements — Ollama
+
+Ollama is required to run Orbital Ember's AI features.
+
+Artificial intelligence is a core component of Orbital Ember. The application uses a locally running Ollama service to power AI-assisted research analysis and summaries.
+
+Before using Orbital Ember's AI features, users must:
+
+Install Ollama from https://ollama.com/
+
+Start the Ollama service.
+
+Download the AI model specified by Orbital Ember.
+
+Keep Ollama running while using AI features.
+
+Without Ollama and the required model, AI-powered features will not work. Other supported application features may remain available.
+
+Future improvement: Bundle the Ollama runtime and AI model directly with the Windows portable release to eliminate separate installation requirements.
 
 - If Windows SmartScreen says "Windows protected your PC", click **More info**, then **Run anyway**. This appears because the app is not code-signed.
 - The first run may take a few seconds to start.
