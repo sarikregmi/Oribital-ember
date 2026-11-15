@@ -1,19 +1,7 @@
-app/bundled_data/psi/
-build/
+.venv/
+.venv-build/
 dist/
-.venv/
-
-# Generated builds — do not push
-/dist/
-/build/
-
-# Python-generated files
+build/
 __pycache__/
-*.py[cod]
-.venv/
-venv/
-
-# Local PSI research data
-psi/data/
-psi/archive/
-*.sqlite3
+*.part
+app/bundled_data/psi/files/

@@ -1,77 +1,35 @@
+"""Catalog state backed only by records from NASA PSI (bundled or live)."""
 from .models import Investigation
 
-
 NASA_PSI_SOURCE = "https://psi.nasa.gov/physci/repo/search?q=&data_source=psi&data_type=investigation"
-
-
-SEED_INVESTIGATIONS = [
-    Investigation(
-        id="BASS",
-        name="Burning and Suppression of Solids",
-        description="Studies ignition, flame spread, and suppression of solid materials in reduced gravity.",
-        domain="flammability",
-        gravity=["microgravity", "normal gravity"],
-        fuels=["fabrics", "plastics", "solid materials"],
-        conditions=["elevated oxygen", "fan-driven airflow"],
-        measurements=["flame spread", "ignition", "extinction time", "temperature"],
-        hardware=["Microgravity Science Glovebox", "fan-driven flow duct"],
-        source_url="https://psi.nasa.gov/physci/repo/data/investigations/BASS",
-        keywords=["flammability", "material selection", "fire prevention", "habitat"],
-    ),
-    Investigation(
-        id="FLEX",
-        name="Flame Extinguishment Experiment",
-        description="Tests extinction of burning droplets using carbon dioxide and helium dilution.",
-        domain="suppression",
-        gravity=["microgravity"],
-        fuels=["liquid fuel droplets"],
-        conditions=["carbon dioxide dilution", "helium dilution", "reduced pressure"],
-        measurements=["extinction diameter", "burning rate", "flame temperature"],
-        hardware=["Multi-user Droplet Combustion Apparatus", "Combustion Integrated Rack"],
-        source_url="https://psi.nasa.gov/physci/repo/data/investigations/FLEX",
-        keywords=["suppression", "extinguishment", "fire control", "crew safety"],
-    ),
-    Investigation(
-        id="SAME",
-        name="Smoke and Aerosol Measurement Experiment",
-        description="Characterizes smoke and aerosol behavior to improve fire detection in microgravity.",
-        domain="detection",
-        gravity=["microgravity"],
-        fuels=["solid material smoke"],
-        conditions=["spacecraft-like airflow", "reduced gravity"],
-        measurements=["particle size", "aerosol concentration", "optical response"],
-        hardware=["smoke and aerosol sensors"],
-        source_url="https://psi.nasa.gov/physci/repo/data/investigations/SAME",
-        keywords=["smoke detection", "alarm", "aerosol", "early warning"],
-    ),
-    Investigation(
-        id="ACME-CFI",
-        name="Cool Flames Investigation",
-        description="Examines gaseous flames and cool-flame chemistry across high oxygen concentrations.",
-        domain="fundamental",
-        gravity=["microgravity"],
-        fuels=["propane", "gaseous fuels"],
-        conditions=["up to 85 percent oxygen", "nitrogen dilution", "spherical burner"],
-        measurements=["flame temperature", "chemical species", "flame structure"],
-        hardware=["Combustion Integrated Rack", "spherical burner"],
-        source_url="https://psi.nasa.gov/physci/repo/data/investigations/CFI",
-        keywords=["oxygen concentration", "flammability limits", "lunar habitat", "chemistry"],
-    ),
-    Investigation(
-        id="BRE",
-        name="Burning Rate Emulator",
-        description="Measures gaseous-fuel burning behavior as a proxy for material flammability properties.",
-        domain="flammability",
-        gravity=["microgravity"],
-        fuels=["gaseous fuels"],
-        conditions=["still atmosphere", "controlled oxygen concentration"],
-        measurements=["burning rate", "flame temperature", "extinction"],
-        hardware=["Combustion Integrated Rack"],
-        source_url="https://psi.nasa.gov/physci/repo/data/investigations/BRE",
-        keywords=["predictive modeling", "material properties", "flammability"],
-    ),
-]
+_LIVE_INVESTIGATIONS: list[Investigation] = []
+_BUNDLED_INVESTIGATIONS: list[Investigation] = []
+_CATALOG_SOURCE = "NASA PSI archive unavailable"
 
 
 def get_catalog() -> list[Investigation]:
-    return SEED_INVESTIGATIONS.copy()
+    """Prefer current live records; otherwise use the bundled PSI snapshot."""
+    return (_LIVE_INVESTIGATIONS or _BUNDLED_INVESTIGATIONS).copy()
+
+
+def set_bundled_catalog(records: list[Investigation]) -> None:
+    global _BUNDLED_INVESTIGATIONS, _CATALOG_SOURCE
+    _BUNDLED_INVESTIGATIONS = records.copy()
+    _CATALOG_SOURCE = "NASA PSI bundled snapshot" if records else "NASA PSI archive unavailable"
+
+
+def set_live_catalog(records: list[Investigation]) -> None:
+    global _LIVE_INVESTIGATIONS, _CATALOG_SOURCE
+    _LIVE_INVESTIGATIONS = records.copy()
+    if records:
+        _CATALOG_SOURCE = "NASA PSI live catalogue"
+    elif not _BUNDLED_INVESTIGATIONS:
+        _CATALOG_SOURCE = "NASA PSI archive unavailable"
+
+
+def catalog_source() -> str:
+    return _CATALOG_SOURCE
+
+
+def get_live_catalog() -> list[Investigation]:
+    return _LIVE_INVESTIGATIONS.copy()

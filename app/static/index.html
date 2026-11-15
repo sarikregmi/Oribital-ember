@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Orbital Ember</title>
-  <link rel="stylesheet" href="/static/styles.css?v=human-answers-1">
+  <link rel="stylesheet" href="/static/styles.css?v=dataset-engine-1">
 </head>
 <body>
 <div id="startup-loader" class="startup-loader" role="status" aria-live="polite">
@@ -102,12 +102,13 @@
       <div class="results-panel">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">INVESTIGATION INDEX</p>
-            <h2 id="result-title">Loading investigations</h2>
+            <h2 id="result-title">Loading NASA investigations</h2>
+            <button id="refresh-investigations" type="button" class="resource-analyze">Refresh NASA index</button>
           </div>
           <span id="result-count" class="count"></span>
         </div>
         <div id="results" class="results" aria-live="polite"></div>
+        <div id="psi-archive" class="saved-resources" aria-live="polite"></div>
         <div id="saved-resources" class="saved-resources" aria-live="polite"></div>
       </div>
 
@@ -118,6 +119,6 @@
       </aside>
     </section>
   </main>
-  <script src="/static/app.js?v=human-answers-1"></script>
+  <script src="/static/app.js?v=psi-archive-bundle-1"></script>
 </body>
 </html>

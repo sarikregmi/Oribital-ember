@@ -128,3 +128,33 @@ input:focus, select:focus { border-color: var(--accent); }
   .ask-actions { justify-items: start; }
   .scenario-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* Download records replace the old synthetic prototype entry with real saved files. */
+.saved-resource { gap: 9px; }
+.resource-title { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.resource-size, .plot-caption { color: var(--muted); font: 11px Arial, sans-serif; }
+.resource-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font: 12px Arial, sans-serif; }
+.resource-actions a, .analysis-heading a { color: var(--mint); }
+.resource-analyze { padding: 7px 10px; border: 1px solid var(--accent); color: var(--accent); background: var(--accent-soft); cursor: pointer; }
+.resource-analyze:disabled { opacity: .6; }
+.dataset-analysis { display: grid; gap: 14px; margin-top: 18px; }
+.analysis-heading h3 { margin: 0 0 5px; font-size: 20px; font-weight: 400; }
+.column-analysis { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.column-card { min-width: 0; padding: 12px; border: 1px solid var(--line); background: var(--panel); }
+.column-card h4 { margin: 0 0 6px; overflow-wrap: anywhere; }
+.column-card p { margin-bottom: 8px; font-size: 12px; }
+.numeric-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; color: var(--muted); font: 11px Arial, sans-serif; }
+.numeric-stats b, .category-stats b { color: var(--ink); }
+.dataset-plot { width: 100%; height: 100px; margin-top: 10px; background: #0a1918; }
+.plot-caption { display: block; }
+.category-stats { display: grid; gap: 5px; font: 12px Arial, sans-serif; }
+.category-stats span { display: flex; justify-content: space-between; gap: 8px; }
+.dataset-analysis details { padding: 10px; border: 1px solid var(--line); color: var(--muted); }
+.dataset-analysis pre { overflow: auto; max-height: 260px; color: var(--ink); font: 11px/1.5 monospace; }
+.science-notice { padding: 12px; border-left: 2px solid var(--accent); color: var(--muted); font: 12px/1.5 Arial, sans-serif; }
+.resource-import { display: grid; gap: 9px; margin: 12px 0 16px; padding: 14px; border: 1px dashed var(--line); background: color-mix(in srgb, var(--panel) 70%, transparent); }
+.resource-import strong { color: var(--ink); font-size: 14px; font-weight: 400; }
+.resource-import label { display: grid; gap: 5px; color: var(--muted); font: 11px Arial, sans-serif; }
+.resource-import input { padding: 9px 10px; font: 12px Arial, sans-serif; }
+.dataset-file { display: grid; gap: 10px; }
+.dataset-file > h4 { margin: 8px 0 0; color: var(--accent); font-weight: 400; }

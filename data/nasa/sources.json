@@ -1,9 +1,0 @@
-{
-  "name": "Orbital Ember NASA Fire-Safety Knowledge Base",
-  "status": "curated metadata; verify primary source before engineering use",
-  "records": [
-    {"id": "sofie", "title": "Solid Fuel Ignition and Extinction", "source": "NASA", "topics": ["oxygen concentration", "pressure", "flow", "fuel temperature"]},
-    {"id": "bass", "title": "Burning and Suppression of Solids", "source": "NASA", "topics": ["microgravity", "oxygen concentration", "material geometry"]},
-    {"id": "saffire", "title": "Spacecraft Fire Experiment", "source": "NASA", "topics": ["material behavior", "airflow", "spacecraft atmosphere"]}
-  ]
-}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "provider": "NASA Physical Sciences Informatics",
+  "source_url": "https://psi.nasa.gov/physci/repo/search?q=&data_source=psi&data_type=investigation",
+  "updated_at": null,
+  "catalog_count": 0,
+  "investigations": {},
+  "files": {}
+}

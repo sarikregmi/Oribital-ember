@@ -33,6 +33,7 @@ class ResearchSource(BaseModel):
     url: str
     snippet: str
     source_type: Literal["local", "nasa", "web"]
+    provider: str | None = None
 
 
 class ExplainOptions(BaseModel):
@@ -92,3 +93,24 @@ class ExplanationResponse(BaseModel):
     follow_up_questions: list[str]
     limitations: list[str]
     ai_mode: Literal["grounded-heuristic", "local-llm", "llm-rag"]
+
+
+class DownloadedResource(BaseModel):
+    id: str
+    title: str
+    url: str
+    snippet: str
+    source_type: Literal["local", "nasa", "web"]
+    filename: str
+    size_bytes: int
+    analysis_supported: bool
+    provider: str | None = None
+
+
+class DatasetAnalysis(BaseModel):
+    resource_id: str
+    title: str
+    source_url: str
+    file_name: str
+    file_size_bytes: int
+    analysis: dict
